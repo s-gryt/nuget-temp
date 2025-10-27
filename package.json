@@ -1,0 +1,141 @@
+{
+  "name": "nuget-dependency-graph",
+  "displayName": "NuGet Dependency Graph",
+  "description": "Visualize NuGet package dependencies and vulnerabilities with interactive 3D graphs using React and force-graph-3d",
+  "version": "1.0.3",
+  "publisher": "sgryt",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Visualization",
+    "Other"
+  ],
+  "keywords": [
+    "nuget",
+    "dependencies",
+    "vulnerabilities",
+    "graph",
+    "visualization",
+    "dotnet",
+    "csharp",
+    "react",
+    "3d"
+  ],
+  "activationEvents": [
+    "onLanguage:xml",
+    "onLanguage:csharp"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "nugetGraph.visualizeDependencies",
+        "title": "Visualize NuGet Dependencies",
+        "category": "NuGet Graph"
+      },
+      {
+        "command": "nugetGraph.visualizeVulnerabilities",
+        "title": "Visualize NuGet Vulnerabilities",
+        "category": "NuGet Graph"
+      },
+      {
+        "command": "nugetGraph.visualizeFullGraph",
+        "title": "Visualize Full NuGet Dependency Graph",
+        "category": "NuGet Graph"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "when": "resourceExtname == .csproj",
+          "command": "nugetGraph.visualizeDependencies",
+          "group": "nuget@1"
+        },
+        {
+          "when": "resourceExtname == .csproj",
+          "command": "nugetGraph.visualizeVulnerabilities",
+          "group": "nuget@2"
+        },
+        {
+          "when": "resourceExtname == .csproj",
+          "command": "nugetGraph.visualizeFullGraph",
+          "group": "nuget@3"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "when": "resourceExtname == .csproj",
+          "command": "nugetGraph.visualizeDependencies",
+          "group": "nuget@1"
+        },
+        {
+          "when": "resourceExtname == .csproj",
+          "command": "nugetGraph.visualizeVulnerabilities",
+          "group": "nuget@2"
+        },
+        {
+          "when": "resourceExtname == .csproj",
+          "command": "nugetGraph.visualizeFullGraph",
+          "group": "nuget@3"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run bundle:assets && npm run compile:extension && npm run compile:webview",
+    "compile:extension": "webpack --mode development",
+    "compile:webview": "webpack --config webpack.webview.config.js --mode development",
+    "watch": "npm run watch:extension & npm run watch:webview",
+    "watch:extension": "webpack --mode development --watch",
+    "watch:webview": "webpack --config webpack.webview.config.js --mode development --watch",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts,tsx",
+    "test": "node ./out/test/runTest.js",
+    "test:mock": "npm run compile && node scripts/test-mock-data.js",
+    "package": "npm run bundle:assets && npm run package:extension && npm run package:webview",
+    "package:extension": "webpack --mode production --devtool hidden-source-map",
+    "package:webview": "webpack --config webpack.webview.config.js --mode production",
+    "bundle:assets": "node scripts/bundle-assets.js"
+  },
+  "devDependencies": {
+    "@types/d3-force": "^3.0.0",
+    "@types/node": "16.x",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@types/three": "^0.155.0",
+    "@types/vscode": "^1.74.0",
+    "@types/vscode-webview": "^1.57.5",
+    "@types/xml2js": "^0.4.11",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "css-loader": "^6.8.1",
+    "eslint": "^8.28.0",
+    "html-webpack-plugin": "^5.5.3",
+    "style-loader": "^3.3.3",
+    "ts-loader": "^9.4.2",
+    "typescript": "^4.9.4",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  },
+  "dependencies": {
+    "d3-force": "^3.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-force-graph-3d": "^1.24.4",
+    "semver": "^7.3.8",
+    "three": "^0.155.0",
+    "xml2js": "^0.6.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nuget-tools/nuget-dependency-graph.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nuget-tools/nuget-dependency-graph/issues"
+  },
+  "homepage": "https://github.com/nuget-tools/nuget-dependency-graph#readme",
+  "license": "MIT",
+  "icon": "images/icon.png"
+}

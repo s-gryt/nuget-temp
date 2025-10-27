@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="128" viewBox="0 0 128 128"
+  xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#004880;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0078d4;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="64" cy="64" r="60" fill="url(#grad1)" stroke="#ffffff" stroke-width="2"/>
+
+  <!-- NuGet package icon -->
+  <rect x="32" y="32" width="64" height="64" rx="8" fill="#ffffff" opacity="0.9"/>
+  <rect x="36" y="36" width="56" height="56" rx="6" fill="none" stroke="#004880" stroke-width="2"/>
+
+  <!-- Graph nodes -->
+  <circle cx="48" cy="48" r="4" fill="#ff6b6b"/>
+  <circle cx="80" cy="48" r="4" fill="#4ecdc4"/>
+  <circle cx="64" cy="64" r="4" fill="#45b7d1"/>
+  <circle cx="48" cy="80" r="4" fill="#96ceb4"/>
+  <circle cx="80" cy="80" r="4" fill="#feca57"/>
+
+  <!-- Graph connections -->
+  <line x1="48" y1="48" x2="64" y2="64" stroke="#666" stroke-width="1.5" opacity="0.7"/>
+  <line x1="80" y1="48" x2="64" y2="64" stroke="#666" stroke-width="1.5" opacity="0.7"/>
+  <line x1="64" y1="64" x2="48" y2="80" stroke="#666" stroke-width="1.5" opacity="0.7"/>
+  <line x1="64" y1="64" x2="80" y2="80" stroke="#666" stroke-width="1.5" opacity="0.7"/>
+
+  <!-- NuGet text -->
+  <text x="64" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff">NuGet</text>
+</svg>
